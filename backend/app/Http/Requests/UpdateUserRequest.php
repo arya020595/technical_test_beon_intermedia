@@ -7,7 +7,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\Rule;
 
-class UpdateOccupantPutRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,16 @@ class UpdateOccupantPutRequest extends FormRequest
      */
     public function rules(): array
     {
-        $occupantId = $this->route('occupant')->id;
+        $userId = $this->route('user')->id;
 
         return [
-            'name' => 'required|string',
-            'image_ktp_url' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'occupant_status' => 'required|string|in:contract,permanent',
-            'phone_number' => [
+            'name' => 'required',
+            'email' => [
                 'required',
-                'string',
-                Rule::unique('occupants')->ignore($occupantId),
+                'email',
+                Rule::unique('users')->ignore($userId)
             ],
-            'is_married' => 'required|boolean',
+            'password' => 'required|min:6|confirmed',
         ];
     }
 
