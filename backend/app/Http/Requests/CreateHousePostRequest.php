@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
 
 class CreateHousePostRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class CreateHousePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,6 +28,17 @@ class CreateHousePostRequest extends FormRequest
             'occupant_id' => 'nullable|exists:occupants,id',
             'is_inhabited' => 'required|boolean',
             'is_rented' => 'required|boolean',
+            'start_date' => 'required|date',
+            'end_date' => 'nullable|date|after:start_date'
         ];
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'success'   => false,
+            'message'   => 'Validation errors',
+            'data'      => $validator->errors()
+        ]));
     }
 }

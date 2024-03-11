@@ -1,31 +1,26 @@
 <?php
 
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 
-class CreateDuesTypePostRequest extends FormRequest
+class CreateOccupantHouseRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
+    public function rules()
     {
         return [
-            'dues_description' => 'required|string',
-            'dues_amount' => 'required|numeric',
+            'occupant_id' => 'required|exists:occupants,id',
+            'house_id' => 'required|exists:houses,id',
+            'start_date' => 'required|date',
+            'end_date' => 'nullable|date|after:start_date',
         ];
     }
 

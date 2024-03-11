@@ -31,14 +31,18 @@ class OccupantController extends Controller
     public function store(CreateOccupantPostRequest $request)
     {
         $data = $request->validated();
+
         $occupant = $this->occupantService->createOccupant($data);
+
         return response()->json(['data' => $occupant], 201);
     }
 
     public function update(UpdateOccupantPutRequest $request, Occupant $occupant)
     {
         $data = $request->validated();
+
         $occupant = $this->occupantService->updateOccupant($occupant, $data);
+
         return response()->json(['data' => $occupant], 200);
     }
 

@@ -10,4 +10,9 @@ class House extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'occupant_id', 'is_inhabited', 'is_rented'];
+
+    public function occupant()
+    {
+        return $this->belongsTo(Occupant::class);
+    }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
 
 class CreatePaymentPostRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class CreatePaymentPostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,11 +28,20 @@ class CreatePaymentPostRequest extends FormRequest
             'house_id' => 'required|exists:houses,id',
             'dues_type_id' => 'required|exists:dues_types,id',
             'billing_start_date' => 'required|date',
-            'billing_end_date' => 'required|date',
+            'billing_end_date' => 'required|date|after_or_equal:billing_start_date',
             'payment_date' => 'required|date',
             'payment_amount' => 'required|numeric',
-            'payment_proof_url' => 'required|string',
+            'payment_proof_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'is_paid' => 'required|boolean',
         ];
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'success'   => false,
+            'message'   => 'Validation errors',
+            'data'      => $validator->errors()
+        ]));
     }
 }

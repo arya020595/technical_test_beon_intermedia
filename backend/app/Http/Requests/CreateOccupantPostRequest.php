@@ -17,7 +17,7 @@ class CreateOccupantPostRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'image_ktp' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image_ktp_url' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'occupant_status' => 'required|string|in:contract,permanent',
             'phone_number' => 'required|string|unique:occupants,phone_number',
             'is_married' => 'required|boolean',

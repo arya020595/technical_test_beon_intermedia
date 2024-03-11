@@ -16,32 +16,20 @@ class OccupantService
     {
         // Logika untuk membuat penghuni baru
         // Misalnya, menyimpan foto KTP ke storage dan mengembalikan path
-        $imagePath = $this->storeKtpImage($data['image_ktp']);
+        $data['image_ktp_url'] = $this->storeKtpImage($data['image_ktp_url']);
 
-        return Occupant::create([
-            'name' => $data['name'],
-            'image_ktp_url' => $imagePath,
-            'occupant_status' => $data['occupant_status'],
-            'phone_number' => $data['phone_number'],
-            'is_married' => (bool) $data['is_married'],
-        ]);
+        return Occupant::create($data);
     }
 
     public function updateOccupant(Occupant $occupant, $data)
     {
         // Logika untuk mengubah data penghuni
         // Misalnya, menyimpan foto KTP baru ke storage dan mengupdate path
-        if (isset($data['image_ktp'])) {
-            $imagePath = $this->storeKtpImage($data['image_ktp']);
-            $occupant->update(['image_ktp_url' => $imagePath]);
+        if (isset($data['image_ktp_url'])) {
+            $data['image_ktp_url'] = $this->storeKtpImage($data['image_ktp_url']);
         }
 
-        $occupant->update([
-            'name' => $data['name'],
-            'occupant_status' => $data['occupant_status'],
-            'phone_number' => $data['phone_number'],
-            'is_married' => (bool) $data['is_married'],
-        ]);
+        $occupant->update($data);
 
         return $occupant;
     }

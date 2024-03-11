@@ -5,8 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
-use App\Rules\UniquePhoneNumber;
-use App\Models\Occupant;
+use Illuminate\Validation\Rule;
 
 class UpdateOccupantPutRequest extends FormRequest
 {
@@ -26,17 +25,14 @@ class UpdateOccupantPutRequest extends FormRequest
     public function rules(): array
     {
         $occupantId = $this->route('occupant')->id;
-        $occupant = Occupant::find($occupantId);
-        $currentPhoneNumber = $occupant ? $occupant->phone_number : null;
-
         return [
             'name' => 'required|string',
-            'image_ktp' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image_ktp_url' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'occupant_status' => 'required|string|in:contract,permanent',
             'phone_number' => [
                 'required',
                 'string',
-                new UniquePhoneNumber($currentPhoneNumber, $occupantId),
+                Rule::unique('occupants')->ignore($occupantId),
             ],
             'is_married' => 'required|boolean',
         ];
