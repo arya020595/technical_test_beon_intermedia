@@ -18,5 +18,5 @@
 ## HOW TO RUN FRONTEND ##
 1. cd frontend
 2. pnpm install
-3. open .env file and put VITE_BASE_URL=http://localhost:3000
+3. open .env file and put VITE_BASE_URL=http://localhost:8000
 4. pnpm dev
