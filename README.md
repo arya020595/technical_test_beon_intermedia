@@ -20,3 +20,17 @@
 2. pnpm install
 3. open .env file and put VITE_BASE_URL=http://localhost:8000
 4. pnpm dev
+
+## DETAIL FEATURE ##
+
+**LOGIN FEATURE**
+
+![Login Feature](https://github.com/arya020595/technical_test_beon_intermedia/assets/20142029/3443de6b-244a-46f4-8396-054b9b46365e)
+
+**REGISTER FEATURE**
+
+![Register Feature](https://github.com/arya020595/technical_test_beon_intermedia/assets/20142029/47793e04-6c4c-454c-9217-22f66bb02dcf)
+
+**UPDATE USER FEATURE**
+
+![Update User Feature](https://github.com/arya020595/technical_test_beon_intermedia/assets/20142029/3326ab59-cdb0-439e-a0b4-21d52263e32f)
