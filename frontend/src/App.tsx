@@ -14,7 +14,7 @@ import Login, {
 } from "./pages/Login";
 import Occupant, { loader as occupantLoader } from "./pages/Occupant";
 import OccupantForm from "./pages/OccupantForm";
-import Payment from "./pages/Payment";
+import Payment, { loader as paymentLoader } from "./pages/Payment";
 import PaymentForm from "./pages/PaymentForm";
 import Register, {
   action as registerAction,
@@ -62,6 +62,7 @@ function App() {
           <Route
             path="payments"
             element={<Payment />}
+            loader={paymentLoader}
             errorElement={<Error />}
           />
           <Route

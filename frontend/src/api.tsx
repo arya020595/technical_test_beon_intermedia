@@ -58,6 +58,35 @@ export async function getHouses() {
   }
 }
 
+export async function getPayments() {
+  try {
+    const baseURL = import.meta.env.VITE_BASE_URL;
+    const accessToken: string | null = localStorage.getItem("accessToken");
+    const url = `${baseURL}/api/payments`;
+
+    const headers = {
+      "Content-Type": "application/json",
+      ...(accessToken && { Authorization: `Bearer ${accessToken}` }),
+    };
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: headers,
+    });
+
+    if (!response.ok) {
+      handleUnauthorized(response);
+      throw await response.json();
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    throw error; // Rethrow the error for the calling code to handle
+  }
+}
+
 export async function authLogin(email: string, password: string) {
   const baseURL = import.meta.env.VITE_BASE_URL;
   const url = `${baseURL}/api/auth/login`;

@@ -9,7 +9,7 @@ class PaymentService
 {
     public function getAllPayments()
     {
-        return Payment::all();
+        return Payment::with('occupant', 'house', 'duesType')->get();
     }
 
     public function createPayment($data)
