@@ -46,8 +46,8 @@ function House() {
               <td>{house.id}</td>
               <td>{house.name}</td>
               <td>{house.occupant.name}</td>
-              <td>{house.is_rented}</td>
-              <td>{house.is_inhabited}</td>
+              <td>{house.is_rented ? "True" : "False"}</td>
+              <td>{house.is_inhabited ? "True" : "False"}</td>
               <td>
                 <Button variant="success" size="sm" onClick={handleCreate}>
                   Create

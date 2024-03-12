@@ -49,7 +49,7 @@ function Occupant() {
               <td>{occupant.image_ktp_url}</td>
               <td>{occupant.occupant_status}</td>
               <td>{occupant.phone_number}</td>
-              <td>{occupant.is_married}</td>
+              <td>{occupant.is_married ? "True" : "False"}</td>
               <td>
                 <Button variant="success" size="sm" onClick={handleCreate}>
                   Create
