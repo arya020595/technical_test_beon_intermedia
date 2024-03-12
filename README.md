@@ -11,9 +11,11 @@
 1. Service pattern
 2. Slim controller, Fat service
 
-**Collection Postman**
+**COLLECTION POSTMAN**
 [link](https://api.postman.com/collections/7412551-6b9a9bc7-c462-462a-b8c6-747606c82c90?access_key=PMAT-01HRQAZ5JQD5R8C76910FJH8JX)
 
+**ERD**
+[link](https://app.diagrams.net/#G1CBNmCHVUrF3N6YArFwfMtyXqcwZTJLZF#%7B%22pageId%22%3A%22me_z47w0EJBWJUiHjxUt%22%7D)
 
 ## HOW TO RUN FRONTEND ##
 1. cd frontend
