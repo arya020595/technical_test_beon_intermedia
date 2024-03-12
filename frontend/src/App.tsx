@@ -6,7 +6,7 @@ import AuthLayout from "./components/AuthLayout";
 import Error from "./components/Error";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import House from "./pages/House";
+import House, { loader as houseLoader } from "./pages/House";
 import HouseForm from "./pages/HouseForm";
 import Login, {
   action as loginAction,
@@ -48,7 +48,12 @@ function App() {
             element={<OccupantForm />}
             errorElement={<Error />}
           />
-          <Route path="houses" element={<House />} errorElement={<Error />} />
+          <Route
+            path="houses"
+            element={<House />}
+            loader={houseLoader}
+            errorElement={<Error />}
+          />
           <Route
             path="house-form"
             element={<HouseForm />}

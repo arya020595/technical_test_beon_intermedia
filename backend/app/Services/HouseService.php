@@ -16,7 +16,7 @@ class HouseService
 
     public function getAllHouses()
     {
-        return House::all();
+        return House::with('occupant')->get();
     }
 
     public function createHouse($data)

@@ -12,8 +12,6 @@ export async function loader({ request }: any) {
 function Occupant() {
   const occupantData: any = useLoaderData();
 
-  console.log(occupantData);
-
   const handleCreate = () => {
     // Implement your create logic here
     console.log("Create clicked");
