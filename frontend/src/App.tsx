@@ -12,7 +12,7 @@ import Login, {
   action as loginAction,
   loader as loginLoader,
 } from "./pages/Login";
-import Occupant from "./pages/Occupant";
+import Occupant, { loader as occupantLoader } from "./pages/Occupant";
 import OccupantForm from "./pages/OccupantForm";
 import Payment from "./pages/Payment";
 import PaymentForm from "./pages/PaymentForm";
@@ -40,6 +40,7 @@ function App() {
           <Route
             path="occupants"
             element={<Occupant />}
+            loader={occupantLoader}
             errorElement={<Error />}
           />
           <Route
