@@ -35,9 +35,9 @@ class UserController extends Controller
 
         $user = $this->userService->createUser($data);
 
-        $access_token = JWTAuth::fromUser($user);
+        $accessToken = JWTAuth::fromUser($user);
 
-        return response()->json(compact('user', 'access_token'), 201);
+        return response()->json(compact('user', 'accessToken'), 201);
     }
 
     public function update(UpdateUserRequest $request, User $user)
@@ -46,9 +46,9 @@ class UserController extends Controller
 
         $user = $this->userService->updateUser($user, $data);
 
-        $access_token = JWTAuth::fromUser($user);
+        $accessToken = JWTAuth::fromUser($user);
 
-        return response()->json(compact('user', 'access_token'));
+        return response()->json(compact('user', 'accessToken'));
     }
 
     public function destroy($id)

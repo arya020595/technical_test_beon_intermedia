@@ -37,8 +37,8 @@ class CreateHousePostRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json([
             'success'   => false,
-            'message'   => 'Validation errors',
-            'data'      => $validator->errors()
-        ]));
+            'error'   => 'Validation errors',
+            'messages'      => $validator->errors()
+        ], 400));
     }
 }
