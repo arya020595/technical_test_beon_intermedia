@@ -20,7 +20,7 @@ class OccupantSeeder extends Seeder
             Occupant::create([
                 'name' => $faker->name,
                 'image_ktp_url' => $faker->imageUrl(),
-                'occupant_status' => $faker->randomElement(['Student', 'Employee', 'Other']),
+                'occupant_status' => $faker->randomElement(['permanent', 'contract']),
                 'phone_number' => $faker->phoneNumber,
                 'is_married' => $faker->boolean,
             ]);
