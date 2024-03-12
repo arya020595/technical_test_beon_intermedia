@@ -35,8 +35,8 @@ function House() {
             <th>ID</th>
             <th>Name</th>
             <th>Occupant Name</th>
-            <th>Is Rented</th>
-            <th>Is Inhabited</th>
+            <th>Is Rented?</th>
+            <th>Is Inhabited?</th>
             <th>Actions</th>
           </tr>
         </thead>

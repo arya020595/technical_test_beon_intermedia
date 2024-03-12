@@ -37,7 +37,7 @@ function Occupant() {
             <th>Image KTP</th>
             <th>Occupant Status</th>
             <th>Phone Number</th>
-            <th>Marital Status</th>
+            <th>Is Married?</th>
             <th>Actions</th>
           </tr>
         </thead>
