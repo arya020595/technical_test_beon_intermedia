@@ -20,3 +20,14 @@
 2. pnpm install
 3. open .env file and put VITE_BASE_URL=http://localhost:8000
 4. pnpm dev
+
+## DETAIL FEATURE ##
+
+**LOGIN FEATURE**
+![Login Feature](https://pasteboard.co/bVfRB1KE2R85.png)
+
+**REGISTER FEATURE**
+![Register Feature](https://ibb.co/x5k1rNR)
+
+**UPDATE USER FEATURE**
+![alt text](https://ibb.co/y4H0cgF)
