@@ -1,5 +1,5 @@
 import { Button, Table } from "react-bootstrap";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { getHouses } from "../api";
 import requireAuth from "../utils";
 
@@ -11,15 +11,22 @@ export async function loader({ request }: any) {
 
 function House() {
   const houseData: any = useLoaderData();
+  const navigate = useNavigate();
 
   const handleCreate = () => {
     // Implement your create logic here
-    console.log("Create clicked");
+    navigate("/house-form");
   };
 
   const handleEdit = (id: any) => {
-    // Implement your edit logic here with the occupant id
-    console.log(`Edit clicked for occupant with ID ${id}`);
+    // Find the occupant with the given id from occupantData
+    const houseToEdit = houseData?.data.find((house: any) => house.id === id);
+
+    // Check if occupantToEdit is found
+    if (houseToEdit) {
+      // Navigate to the house-form route with the occupant's data as state
+      navigate("/house-form", { state: { house: houseToEdit } });
+    }
   };
 
   const handleDelete = (id: any) => {
@@ -49,7 +56,10 @@ function House() {
               <td>{house.is_rented ? "True" : "False"}</td>
               <td>{house.is_inhabited ? "True" : "False"}</td>
               <td>
-                <Button variant="success" size="sm" onClick={handleCreate}>
+                <Button
+                  variant="success"
+                  size="sm"
+                  onClick={() => handleCreate()}>
                   Create
                 </Button>{" "}
                 <Button

@@ -49,7 +49,7 @@ function User() {
       <Container>
         <Row xs={1} md={2} lg={3} className="justify-content-center">
           <Col>
-            <Form replace method="post" encType="multipart/form-data">
+            <Form replace method="post">
               <>
                 <FormBootstrap.Group className="mb-3">
                   <FormBootstrap.Control

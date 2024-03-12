@@ -1,6 +1,5 @@
 import { Route, RouterProvider, createRoutesFromElements } from "react-router";
 import { createBrowserRouter } from "react-router-dom";
-// import "./App.css";
 import NotFound from "./NotFound";
 import AuthLayout from "./components/AuthLayout";
 import Error from "./components/Error";

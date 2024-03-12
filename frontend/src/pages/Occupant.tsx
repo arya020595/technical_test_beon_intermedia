@@ -1,5 +1,5 @@
 import { Button, Table } from "react-bootstrap";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { getOccupants } from "../api";
 import requireAuth from "../utils";
 
@@ -11,10 +11,10 @@ export async function loader({ request }: any) {
 
 function Occupant() {
   const occupantData: any = useLoaderData();
-
+  const navigate: any = useNavigate();
   const handleCreate = () => {
     // Implement your create logic here
-    console.log("Create clicked");
+    navigate("/occupant-form");
   };
 
   const handleEdit = (id: any) => {
