@@ -28,7 +28,7 @@ class CreateHousePostRequest extends FormRequest
             'occupant_id' => 'nullable|exists:occupants,id',
             'is_inhabited' => 'required|boolean',
             'is_rented' => 'required|boolean',
-            'start_date' => 'required|date',
+            'start_date' => 'date',
             'end_date' => 'nullable|date|after:start_date'
         ];
     }
